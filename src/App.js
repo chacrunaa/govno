@@ -2,29 +2,68 @@ import React, { useState } from "react";
 
 import "./App.css";
 import { Shitting } from "./Shitting";
+import { sendButtonClick } from "./services";
 
 function App() {
-  const [isClick, setIsClick] = useState(false);
+  const [data, setData] = useState();
 
-  const handleClick = () => {
-    setIsClick(!isClick);
+  const handleClick = (id) => {
+    const response = sendButtonClick(id);
+
+    console.log(response, "response");
+
+    setData(response);
   };
+
+  console.log(data, "data");
 
   return (
     <div className="app">
-      <span className="title"> тут мое приложение и оно работает.</span>
-      <button className="btn" onClick={handleClick}/>
-      <aside className="aside"></aside>
-      <Shitting />
-      <div>
-        <>
-          {isClick ? (
-            <div className="zopa">Привет!</div>
-          ) : (
-            <div className="zopaa">Иди нахуй</div>
-          )}
-        </>
+      <div className="wrapper">
+        <span className="title"> тут мое приложение и оно работает.</span>
+        <div className="hueta">
+          <input
+            className="btn"
+            type="button"
+            onClick={() => handleClick(1)}
+            value="нажимаешь"
+          />
+          <input
+            className="btn"
+            type="button"
+            onClick={() => handleClick(2)}
+            value="НАЖИМАЕШЬ НАХУЙ"
+          />
+        </div>
+        {data !== undefined && (
+          <>
+            {data ? (
+              <>
+                <div
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    backgroundColor: "blue",
+                  }}
+                >
+                  ТЫ ПОЛУЧИЛ TRUE
+                </div>
+              </>
+            ) : (
+              <div
+                style={{
+                  width: "100px",
+                  height: "100px",
+                  backgroundColor: "gray",
+                }}
+              >
+                ТЫ ПОЛУЧИЛ FALSE
+              </div>
+            )}
+          </>
+        )}
       </div>
+      <Shitting />
     </div>
   );
 }

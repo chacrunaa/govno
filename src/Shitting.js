@@ -9,9 +9,9 @@ export function Shitting() {
 
   return (
     <div style={{ display: "flex" }}>
-      <span>Получить говно -</span>
+      <span>Получай говно -</span>
 
-      <button te onClick={getGovno} />
+      <input type="button" value='получить' onClick={getGovno} />
 
       <div>
         {govnoData.map(() => (
@@ -19,6 +19,7 @@ export function Shitting() {
             <img
               style={{ height: "50px", width: "50px" }}
               src="https://images.izi.ua/50539607"
+              alt="говно"
             />
           </>
         ))}
