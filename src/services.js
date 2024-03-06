@@ -1,4 +1,4 @@
-const backendUrl = "http://31.129.45.3/api";
+const backendUrl = "https://interview-test.ru/api";
 
 export function sendButtonClick(buttonId) {
   console.log(backendUrl, "backendUrl");
