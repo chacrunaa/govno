@@ -8,11 +8,14 @@ function App() {
   const [data, setData] = useState();
 
   const handleClick = (id) => {
-    const response = sendButtonClick(id);
+    try {
+      const response = sendButtonClick(id);
 
-    console.log(response, "response");
-
-    setData(response);
+      console.log(response, "response");
+      setData(response);
+    } catch (e) {
+      console.log(e, "error");
+    }
   };
 
   console.log(data, "data");

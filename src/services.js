@@ -1,6 +1,7 @@
-const backendUrl = "http://localhost:8080/api";
+const backendUrl = "http://31.129.45.3/api";
 
 export function sendButtonClick(buttonId) {
+  console.log(backendUrl, "backendUrl");
   fetch(`${backendUrl}/button-click`, {
     method: "POST",
     headers: {
@@ -10,10 +11,9 @@ export function sendButtonClick(buttonId) {
   })
     .then((response) => response.json())
     .then((data) => {
-      // Обработка ответа от сервера
       console.log("Response from server:", data);
     })
     .catch((error) => {
-      console.error("Error:", error);
+      console.error("Error:", error.message);
     });
 }
