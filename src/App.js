@@ -7,18 +7,16 @@ import { sendButtonClick } from "./services";
 function App() {
   const [data, setData] = useState();
 
-  const handleClick = (id) => {
+  const handleClick = async (id) => {
     try {
-      const response = sendButtonClick(id);
+      const response = await sendButtonClick(id);
+      console.log(response, "responsee");
 
-      console.log(response, "response");
       setData(response);
     } catch (e) {
       console.log(e, "error");
     }
   };
-
-  console.log(data, "data");
 
   return (
     <div className="app">
@@ -40,7 +38,7 @@ function App() {
         </div>
         {data !== undefined && (
           <>
-            {data ? (
+            {data.flag ? (
               <>
                 <div
                   style={{
